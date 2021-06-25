@@ -1,23 +1,28 @@
-menu_list_array = ["Veg Margherita Pizza", "Chicken Deluxe Pizza", "Veg Deluxe Pizza", "Paneer Tikka Pizza", "Pepperoni Pizza", "Desi Veg Pizza (Gorgonzola and mushroom)" 
-                    ];
+var Guest_name_array = [];
 
-function getmenu(){
-var htmldata;
-htmldata="<ol class= 'menulist ' >
-    menu_list_array. sort ();
-    for(var i-0;i<menu_list_array. length; i++){
-    htmldata=htmldata+'<li>'+ menu_list_array [i] + '</li> "
-    htmldata=htmldata+"</ol> "
-    document.getElement By Id ("display_menu"). innerHTML = htmldata;
+function submit() {
+    var Guest_name = document.getElementById("Enter Name").value
+    Guest_name_array.push("Guest_name");
+    document.getElementById("name_display").innerHTML = Guest_name_array;
+    var array_length = Guest_name_array.length;
 }
 
-function add_item(){
-var htmldata;
-var item=document.getElementById("add_item").value;
-//Complete the code
-
+function show() {
+    var i = Guest_name_array.join;
+    document.getElementById("name_show").innerHTML;
 }
 
-function add_top(){
-//Complete the code
+function sort() {
+    Guest_name_array.sort;
+    var a = Guest_name_array.join;
+    document.getElementById("name_sort").innerHTML;
+}
+
+function search() {
+    var s = document.getElementById("Search_name").value; var found = 0;
+    var j;
+
+for(j=0; j<Guest_name_array.length; j++) 
+    if(sa=Guest_name_array[i]) 
+document.getElementById("Search_names").innerHTML = "Name Found "
 }

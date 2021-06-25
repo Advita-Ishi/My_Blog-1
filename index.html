@@ -1,50 +1,36 @@
-<html><head>
-    <title>Pizzeria</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<html>
+    <head> 
+        <title> My Guest List </title> 
     <link rel="stylesheet" href="style.css">
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </head>
 
-<body>
-    <div class="topnav">
-        <a class="active" href="#">Pizzeria</a>
-        <div class="topnav-right">
-         <a href="#viewblock">View Menu</a>
-         <a href="#addTopings">Add Menu</a>
-        </div>
-    </div>
+    <body style="text-align: center;">
+    <h1> Guest List </h1>
+    <input type="text" placeholder="Enter Name" id="guest_name">
+    <button onclick="submit()" id="submit_button"> Submit </button>
+    <br>
+    <hr>
 
-    <div class="row" id="viewblock">
-        <div class="img_div"> 
-            <img class="img-responsive" src="images/pizza.png">
-        </div>
-        <div class="menu_div">
-            <button id="menu_list" onclick="getmenu()">Show Menu</button>
-           <div id="display_menu"></div>
-        </div>
-    </div>
-    
-    <div class="newRow" id="addTopings">
-        <div class="block1">
-            <input id="add_item" placeholder="Type here to add toppings?"> 
-			
-            <button id="add_toppings" onclick="add_item()">Show Pizza</button>
-        </div>
-		
-        <div class="block2">
-            <div id="display_addedmenu">
-            </div>
-        </div>
-        
-    </div>
+    <div id="name_display">
 
-    <div>
-        <img class="img-responsive" src="images/topping.png">
     </div>
+    <hr>
+    <button onclick="show()" id="show_list"> Show </button>
+<div id="name_show">
 
+</div>
+<hr>
 
-</body></html>
+<button onclick="sort()" id="sort"> Sort </button>
+<div id="name_sort">
+
+</div>
+<hr>
+<br>
+
+<input type="text" placeholder="Search Name" id="search_name">
+<button onclick="search()" id="search_button"> Search Names </button>
+<div id="search_names"></div>
+    </body>
+</html>
