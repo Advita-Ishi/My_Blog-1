@@ -1,42 +1,23 @@
-var mouse_event = "empty";
-var last_x, last_y;
+menu_list_array = ["Veg Margherita Pizza", "Chicken Deluxe Pizza", "Veg Deluxe Pizza", "Paneer Tikka Pizza", "Pepperoni Pizza", "Desi Veg Pizza (Gorgonzola and mushroom)" 
+                    ];
 
-canvas = document.getElementById("myCanvas");
-ctx = canvas.getContext("2d");
+function getmenu(){
+var htmldata;
+htmldata="<ol class= 'menulist ' >
+    menu_list_array. sort ();
+    for(var i-0;i<menu_list_array. length; i++){
+    htmldata=htmldata+'<li>'+ menu_list_array [i] + '</li> "
+    htmldata=htmldata+"</ol> "
+    document.getElement By Id ("display_menu"). innerHTML = htmldata;
+}
 
-color = "black";
-line_width = 1;
-canvas.addEventListener("mousedown", my_mousedown);
-function my_mousedown(e)
-{
-mouse_event = "mouseDown";
+function add_item(){
+var htmldata;
+var item=document.getElementById("add_item").value;
+//Complete the code
 
 }
-canvas.addEventListener("mousemove", my_mousemove);
-function my_mousemove(e)
-{
-    current_x = e.clientX - canvas.offsetLeft;
-    current_y = e.clientY - canvas.offsetTop;
-    if (mouse_event == "mouseDown") {
-        ctx.beginPath();
-        ctx.strokeStyle = color;
-        ctx.lineWidth = line_width;
-        ctx.moveTo(last_x, last_y);
-        ctx.lineTo(current_x, current_y);
-        ctx.stroke();
-    }
-    last_x = current_x;
-    last_y = current_y;
-}
-canvas.addEventListener("mouseup", my_mouseup);
-function my_mouseup(e)
-{
-mouse_event = "mouseUp";
 
-}
-canvas.addEventListener("mouseleave", my_mouseleave);
-function my_mouseleave(e)
-{
-mouse_event = "mouseLeave";
-
+function add_top(){
+//Complete the code
 }
