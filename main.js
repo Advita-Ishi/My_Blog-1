@@ -30,3 +30,16 @@ function my_mousemove(e)
     last_x = current_x;
     last_y = current_y;
 }
+
+canvas.addEventListener("mouseup", my_mouseup);
+function my_mouseup(e)
+{
+mouse_event = "mouseUp";
+
+}
+canvas.addEventListener("mouseleave", my_mouseleave);
+function my_mouseleave(e)
+{
+mouse_event = "mouseLeave";
+
+}
