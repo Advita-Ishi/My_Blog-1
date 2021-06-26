@@ -1,28 +1,32 @@
-var Guest_name_array = [];
+var mouse_event = "empty";
+var last_x , last_y;
 
-function submit() {
-    var Guest_name = document.getElementById("Enter Name").value
-    Guest_name_array.push("Guest_name");
-    document.getElementById("name_display").innerHTML = Guest_name_array;
-    var array_length = Guest_name_array.length;
+canvas = document.getElementById("myCanvas");
+ctx = canvas.getContext("2d");
+
+color = "black";
+line_width = 1;
+canvas.addEventListener("mousedown", my_mousedown);
+
+function my_mousedown(e)
+{
+color = document.getElementById("color").value;
+line_width = document.getElementById("line_width").value;
+radius = document.getElementById("radius").value;
+mouse_event = "mouseDown";
 }
-
-function show() {
-    var i = Guest_name_array.join;
-    document.getElementById("name_show").innerHTML;
-}
-
-function sort() {
-    Guest_name_array.sort;
-    var a = Guest_name_array.join;
-    document.getElementById("name_sort").innerHTML;
-}
-
-function search() {
-    var s = document.getElementById("Search_name").value; var found = 0;
-    var j;
-
-for(j=0; j<Guest_name_array.length; j++) 
-    if(sa=Guest_name_array[i]) 
-document.getElementById("Search_names").innerHTML = "Name Found "
+canvas.addEventListener("mousemove", my_mousemove);
+function my_mousemove(e)
+{
+    current_x = e.clientX - canvas.offsetLeft;
+    current_y = e.clientY - canvas.offsetTop;
+    if (mouse_event == "mouseDown") {
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = line_width;
+        ctx.arc(current_x, current_y, radius ,0 ,2 * Math.PI);
+        ctx.stroke();
+    }
+    last_x = current_x;
+    last_y = current_y;
 }
