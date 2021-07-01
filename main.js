@@ -1,45 +1,64 @@
-var mouse_event = "empty";
-var last_x , last_y;
-
 canvas = document.getElementById("myCanvas");
-ctx = canvas.getContext("2d");
+var CTX = canvas.getContext("2d");
 
-color = "black";
-line_width = 1;
-canvas.addEventListener("mousedown", my_mousedown);
+var background_image = "mars.jpg";
+var rover_image = "rover.png";
 
-function my_mousedown(e)
-{
-color = document.getElementById("color").value;
-line_width = document.getElementById("line_width").value;
-radius = document.getElementById("radius").value;
-mouse_event = "mouseDown";
+var rover_width = "100";
+var rover_height = "100";
+
+var rover_x = "200";
+var rover_y = "200";
+
+function add() {
+    background_img = new Image();
+    background_img.onload = upload_background;
+    background_img.src = background_image;
+
+    rover_img = new Image();
+    rover_img.onload = upload_rover;
+    rover_img.src = rover_image;
+
 }
-canvas.addEventListener("mousemove", my_mousemove);
-function my_mousemove(e)
-{
-    current_x = e.clientX - canvas.offsetLeft;
-    current_y = e.clientY - canvas.offsetTop;
-    if (mouse_event == "mouseDown") {
-        ctx.beginPath();
-        ctx.strokeStyle = color;
-        ctx.lineWidth = line_width;
-        ctx.arc(current_x, current_y, radius ,0 ,2 * Math.PI);
-        ctx.stroke();
+
+function upload_rover() {
+    CTX.drawImage(rover_img, rover_x, rover_y, rover_width, rover_height);
+}
+
+function upload_background() {
+    CTX.drawImage(background_img, 0, 0, canvas.width, canvas.height);
+}
+
+window.addEventListener("keydown", my_keydown);
+
+function my_keydown(e) {
+    key_pressed = e.keyCode;
+    if (key_pressed == '38') {
+        up();
+        console.log("Up key is pressed.");
     }
-    last_x = current_x;
-    last_y = current_y;
+
+    if (key_pressed == '40') {
+        down();
+        console.log("Down key is pressed.");
+    }
+
+    if (key_pressed == '37') {
+        left();
+        console.log("Left key is pressed.");
+    }
+
+    if (key_pressed == '39') {
+        right();
+        console.log("Right key is pressed.");
+    }
 }
 
-canvas.addEventListener("mouseup", my_mouseup);
-function my_mouseup(e)
-{
-mouse_event = "mouseUp";
-
-}
-canvas.addEventListener("mouseleave", my_mouseleave);
-function my_mouseleave(e)
-{
-mouse_event = "mouseLeave";
-
+function up() {
+    if (rover_y >= 0) {
+        rover_y = rover_y - 10;
+        console.log("When up arrow is pressed, x = " + rover_x + " | y = " + rover_y);
+        upload_background();
+        upload_rover();
+    }
 }
