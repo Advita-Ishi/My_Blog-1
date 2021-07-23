@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Moving Rover </title>
-<style>
-body{
-	background-image: url("mars.gif");
-    background-position: center;
-    background-size: cover;
-}
-#myCanvas
-{
-	border-width:10px;
-	background-color: white; 
-	border-style:ridge;
-}
+	<title>C85</title>
 
-h1,h4
-{
-	color: white !important;
-}
-</style>		
+<link rel="stylesheet" href="style.css">
+
+<script src="fabric.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<title>Moving Rover On</title>
-</head>
-<body onload="add()"> 
-<center>
-<h1>Moving Rover On Mars</h1>
-<canvas id="myCanvas" width="800" height="550"></canvas>
-<h4>
-	<b class="text-danger">NOTE : </b> IF ROVER IS NOT VISIBLE PRESS ANY ARROW KEY
-</h4>
 
-</center>
-<script src="main.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<body class="body_background">
+
+	<center>
+
+	<h2 class="btn-primary">MINECRAFT</h2>
+
+	<div id="head_info" class="btn-danger">
+		<h3>Current Width  = <span id="width">30</span></h3>
+		<h3>Current Height  = <span id="height">30</span></h3>
+	</div>
+
+	<canvas width="1000" height="600" id="myCanvas"></canvas>
+	</center>
+	<script src="main.js"></script>
 </body>
 </html>

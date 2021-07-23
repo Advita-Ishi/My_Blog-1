@@ -1,64 +1,133 @@
-canvas = document.getElementById("myCanvas");
-var CTX = canvas.getContext("2d");
+var canvas = new fabric.Canvas("myCanvas");
 
-var background_image = "mars.jpg";
-var rover_image = "rover.png";
+block_width = 30;
+block_height = 30;
 
-var rover_width = "100";
-var rover_height = "100";
+player_x = 10;
+player_y = 10;
 
-var rover_x = "200";
-var rover_y = "200";
+var player_img = "";
+var block_img = "";
 
-function add() {
-    background_img = new Image();
-    background_img.onload = upload_background;
-    background_img.src = background_image;
+function player_update() {
+    fabric.Image.fromURL("player.png", function(Img){
+        player_img = Img;
 
-    rover_img = new Image();
-    rover_img.onload = upload_rover;
-    rover_img.src = rover_image;
-
+        player_img.scaleToWidth(150);
+        player_img.scaleToHeight(150);
+        player_img.set({
+            top:player_y,
+            left:player_x
+        });
+        canvas.add(player_img);
+    });
 }
 
-function upload_rover() {
-    CTX.drawImage(rover_img, rover_x, rover_y, rover_width, rover_height);
-}
+function newImg_update(get_image) {
+    fabric.Image.fromURL(get_image, function(Img){
+        block_img = Img;
 
-function upload_background() {
-    CTX.drawImage(background_img, 0, 0, canvas.width, canvas.height);
+        block_img.scaleToWidth(block_width);
+        block_img.scaleToHeight(block_height);
+        block_img.set({
+            top:player_y,
+            left:player_x
+        });
+        canvas.add(block_img);
+    });
 }
-
 window.addEventListener("keydown", my_keydown);
 
-function my_keydown(e) {
-    key_pressed = e.keyCode;
-    if (key_pressed == '38') {
+function my_keydown(e){
+    keypressed = e.keyCode;
+    console.log(keypressed);
+    if(e.shiftKey == true && keypressed == "80"){
+        block_width = block_width + 10;
+        block_height = block_height + 10;
+        document.getElementById("width").innerHTML = block_width;
+        document.getElementById("height").innerHTML = block_height;
+    }
+
+    if(e.shiftKey == true && keypressed == "77"){
+        block_width = block_width - 10;
+        block_height = block_height - 10;
+        document.getElementById("width").innerHTML = block_width;
+        document.getElementById("height").innerHTML = block_height;
+    }
+    if(keypressed == '67'){
+        newImg_update("cloud.jpg");
+    }
+    if(keypressed == '68'){
+        newImg_update("dark_green.png");
+    }
+    if(keypressed == '71'){
+        newImg_update("ground.png");
+    }
+    if(keypressed == '76'){
+        newImg_update("light_green.png");
+    }
+    if(keypressed == '82'){
+        newImg_update("roof.jpg");
+    }
+    if(keypressed == '84'){
+        newImg_update("trunk.jpg");
+    }
+    if(keypressed == '85'){
+        newImg_update("unique.png");
+    }
+    if(keypressed == '87'){
+        newImg_update("wall.jpg");
+    }
+    if(keypressed == '89'){
+        newImg_update("yellow_wall.png");
+    }
+    if(keypressed == '38'){
         up();
-        console.log("Up key is pressed.");
-    }
-
-    if (key_pressed == '40') {
+     }
+     if(keypressed == '40'){
         down();
-        console.log("Down key is pressed.");
-    }
-
-    if (key_pressed == '37') {
+     }
+     if(keypressed == '37'){
         left();
-        console.log("Left key is pressed.");
-    }
-
-    if (key_pressed == '39') {
+     }
+     if(keypressed == '39'){
         right();
-        console.log("Right key is pressed.");
+     }
+    
+    
+}
+function up() {
+    if(player_y >=0) {
+        player_y = player_y - block_height;
+        console.log("block height ="+ player_y);
+        canvas.remove(player_img);
+        player_update();
     }
 }
 
-function up() {
-    if (rover_y >= 0) {
-        rover_y = rover_y - 10;
-        console.log("When up arrow is pressed, x = " + rover_x + " | y = " + rover_y);
-        upload_background();
-        upload_rover();
+function down() {
+    if(player_y <=600) {
+        player_y = player_y + block_height;
+        canvas.remove(player_img);
+        player_update();
     }
 }
+
+function left() {
+    if(player_x >=0) {
+        player_x = player_x - block_width;
+        canvas.remove(player_img);
+        player_update();
+    }
+}
+
+function right() {
+    if(player_x <= 900) {
+        player_x = player_x + block_width;
+        canvas.remove(player_img);
+        player_update();
+    }
+}
+
+
+
